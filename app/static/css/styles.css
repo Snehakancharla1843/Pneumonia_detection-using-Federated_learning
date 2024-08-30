@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: teal;
+
+}
+
+nav{
+    background-color: black;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}

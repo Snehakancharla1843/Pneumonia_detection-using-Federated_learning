@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('upload') }}">Upload</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('register') }}">Sign Up</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h2>Sign Up</h2>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.username.label }} {{ form.username(size=32) }}
+            </div>
+            <div>
+                {{ form.email.label }} {{ form.email(size=32) }}
+            </div>
+            <div>
+                {{ form.password.label }} {{ form.password(size=32) }}
+            </div>
+            <div>
+                {{ form.confirm_password.label }} {{ form.confirm_password(size=32) }}
+            </div>
+            <div>
+                {{ form.submit() }}
+            </div>
+        </form>
+    </div>
+</body>
+</html>
